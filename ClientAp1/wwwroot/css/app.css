@@ -1,0 +1,116 @@
+/* Основной контейнер */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Высота контейнера на всю высоту экрана */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Контейнер для изображения */
+.imge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Помещаем картинку на задний план */
+}
+
+    /* Изображение внутри контейнера */
+    .imge img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Масштабируем изображение, чтобы оно заполнило контейнер */
+    }
+
+/* Контейнер для текста и кнопок */
+.texts {
+    text-align: center;
+    color: white;
+    z-index: 1; /* Помещаем текст и кнопки поверх изображения */
+}
+
+    /* Заголовок */
+    .texts h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    /* Подзаголовок */
+    .texts h3 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+/* Контейнер для кнопок */
+.butt {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Расстояние между кнопками */
+}
+
+/* Общие стили для кнопок */
+.reBut,
+.loBut {
+    width: 150px; /* Увеличиваем ширину кнопок */
+    height: 50px;
+    color: white;
+    border: 2px solid green; /* Красная окантовка */
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(255, 0, 0), rgb(200, 0, 0)); /* Красные оттенки */
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+    /* Стили для кнопки "Регистрация" */
+    .reBut:hover {
+        background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(175, 0, 0), rgb(125, 0, 0)); /* Темно-красные оттенки при наведении */
+        transform: scale(1.05);
+        color: rgb(0, 255, 0) !important; /* Красный текст при наведении */
+    }
+
+    .reBut:active {
+        transform: scale(22.95); /* Уменьшаем кнопку при нажатии */
+    }
+
+    /* Стили для кнопки "Логин" */
+    .loBut:hover {
+        background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(255, 129, 0), #dc3545); /* Темно-красные оттенки при наведении */
+        transform: scale(1.05);
+        color: rgb(00, 255, 200) !important; /* Красный текст при наведении */
+    }
+
+    .loBut:active {
+        transform: scale(0.95); /* Уменьшаем кнопку при нажатии */
+    }
+
+body {
+    background-color: black;
+}
+
+/* Ссылка "Пользователи" */
+.link {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    z-index: 1; /* Помещаем ссылку поверх изображения */
+}
+
+/* Скрываем ошибку Blazor */
+#blazor-error-ui {
+    display: none; /* Скрываем элемент */
+}

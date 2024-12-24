@@ -1,0 +1,55 @@
+﻿@page "/"
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DIBANCE</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval';" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="imge">
+            <img src="https://www.geekgeneration.fr/wp-content/uploads/2019/03/Razer.jpg" alt="Background image" />
+        </div>
+        <div class="texts">
+            <h1>АДСКИЙ СБОРЩИК!</h1>
+            <h3>ДОБРО ПОЖАЛОВАТЬ НА САЙТ АДСКОЙ СБОРКИ</h3>
+            <div class="butt">
+                <a href="/users" class="reBut">Register</a>
+                <a href="/login" class="loBut">Login</a>
+            </div>
+        </div>
+        <a class="link" href="/users">Пользователи</a>
+    </div>
+</body>
+
+@code {
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PasswordHash { get; set; } = null!;
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public DateTime Birthdate { get; set; }
+        public string Gender { get; set; } = null!;
+        public string ProfilePicture { get; set; } = null!;
+        public string Bio { get; set; } = null!;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+    }
+
+    private User[] result = new User[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var client = new HttpClient
+            {
+                BaseAddress = new Uri("https://api-for-socnetwork-1.onrender.com")
+            };
+
+        result = await client.GetFromJsonAsync<User[]>("api/User1");
+    }
+}
